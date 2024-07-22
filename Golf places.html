@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="Golf.css">
+<header class="header" id="header">
+    <div class="logo">     <a href="site.html"> <img src="SVSULOGO.png"></a>
+    </div>
+    <nav>
+      <ul>
+        <li>
+       <a href="savedItems.html">      Saved </a>
+        <a href="About me.html">          Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+<title>Cardinal Spots - Live Entertainment</title>
+
+
+
+
+ 
+
+
+
+<div class="photo">
+   
+<img src="Golfheader.png">
+<div class="centeredtext">
+<h1>Golf Courses</h1>
+
+</div>
+
+
+
+
+
+
+
+<body>
+
+<div class="grid-container">
+
+    <div class="grid-item">
+            <img src="Swan Valley1.jpg">
+            <img src="Swan Valley2.jpg">
+
+        <div class="text">
+            <h1><u>Swan Valley Golf Course
+            </u></h1>
+        </div>
+        <div class="text">
+            <h3>9521 Highland Green Dr, Saginaw, MI 48609</h3>
+            <h3>Hours: Open 8am-10pm, Sunday - Saturday </h3>
+            <h3><a href="https://www.thecreekandthevalley.com/golf/swanvalley/svrates.php">Swan Valley</a></h3>
+
+        <button class="bookmark-btn"></button>
+
+      </div>
+
+      </div>
+
+
+      <div class="grid-item">
+        <img src="Sawmill Golf Club1.jpg">
+        <img src="Sawmill Golf Club.jpg">
+        <div class="text">
+            <h1><u>Sawmill Golf Club</u></h1>
+        </div>
+        <div class="text">
+            <h3>19 Sawmill Blvd, Saginaw, MI 48603</h3>
+            <h3>Hours: Open 7am-10pm, Sunday - Saturday</h3>
+            <h3><a href="https://thesawmill.com/">Sawmill Golf Club</a></h3>
+
+        <button class="bookmark-btn"></button>
+
+      </div>
+
+      </div>
+
+
+      <div class="grid-item">
+        <img src="Pleasantview1.png">
+        <img src="Pleasantview.jpg">
+        <div class="text">
+            <h1><u>Pleasant View Golf Course
+            </u></h1>
+        </div>
+        <div class="text">
+            <h3> 3424 Barnard Rd, Saginaw, MI 48603</h3>
+            <h3>Hours: 9am - 8:30pm, Sunday - Saturday</h3>
+            <h3><a href="https://pleasantviewgc.com/">Pleasant View Golf Course</a></h3>
+
+        <button class="bookmark-btn"></button>
+
+      </div>
+
+      </div>
+
+
+      <div class="grid-item">
+        <img src="Twinoaks.jpeg">
+        <img src="Twinoaks.jpg">
+        <div class="text">
+            <h1><u>Twin Oaks Golf Course</u></h1>
+        </div>
+        <div class="text">
+            <h3>6710 Freeland Rd, Freeland, MI 48623</h3>
+            <h3>Hours: 7am - 10pm, Sunday -Saturday</h3>
+            <h3><a Href="https://twinoaksgolfclubfreeland.com/">Twin Oaks</a></h3>
+
+        <button class="bookmark-btn"></button>
+
+      </div>
+
+      </div>
+
+      <div class="grid-item">
+        <img src="Sandy Ridge.jpg">
+        <img src="Sandy Ridge2.jpg">
+        <div class="text">
+            <h1><u>Sandy Ridge Golf Course</u></h1>
+        </div>
+        <div class="text">
+            <h3> 2750 Lauria Rd, Midland, MI 48642</h3>
+            <h3>Hours: 7am - 8pm, Sunday - Saturday</h3>
+            <h3><a href="https://golfsandyridge.com/">Sandy Ridge Golf Course</a></h3>
+
+        <button class="bookmark-btn"></button>
+
+      </div>
+
+      </div>
+
+
+      <div class="grid-item">
+        <img src="Currie.jpg">
+        <img src="Currie2.jpg">
+        <div class="text">
+            <h1><u>Currie Golf Courses</u></h1>
+        </div>
+        <div class="text">
+            <h3>1300 Currie Pkwy, Midland, MI 48640</h3>
+            <h3>Hours: 6:30am - 6:30pm, Sunday - Saturday</h3>
+            <h3><a href="https://www.curriegolf.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb">Currie Golf Course</a></h3>
+
+        <button class="bookmark-btn"></button>
+
+      </div>
+
+      </div>
+
+
+    
+
+
+
+
+
+
+
+</div>
+
+
+
+
+ <script>
+      /*
+     // Add click event listeners to bookmark buttons
+     document.querySelectorAll('.bookmark-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('bookmarked');
+
+                if (this.classList.contains('bookmarked')) {
+                    // Save the item if bookmarked
+                    saveItem(this.parentElement);
+                } else {
+                    // Unsave the item if unbookmarked
+                    unsaveItem(this.parentElement);
+                }
+            });
+        });
+
+        function saveItem(item) {
+            console.log('Item bookmarked:', item);
+            // Add your saving logic here (e.g., add to local storage)
+        }
+
+        function unsaveItem(item) {
+            console.log('Item unbookmarked:', item);
+            // Add your unsaving logic here (e.g., remove from local storage)
+        }
+        */
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+
+            document.querySelectorAll('.grid-item').forEach(item => {
+                const button = item.querySelector('.bookmark-btn');
+                const itemId = item.getAttribute('data-id');
+
+                if (savedItems.includes(itemId)) {
+                    button.classList.add('bookmarked');
+                }
+
+                button.addEventListener('click', function() {
+                    this.classList.toggle('bookmarked');
+                    if (this.classList.contains('bookmarked')) {
+                        saveItem(itemId, item);
+                    } else {
+                        unsaveItem(itemId);
+                    }
+                });
+            });
+
+            function saveItem(itemId, item) {
+                let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                if (!savedItems.includes(itemId)) {
+                    savedItems.push(itemId);
+                    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                    localStorage.setItem(`savedItem-${itemId}`, item.innerHTML);
+                }
+            }
+
+            function unsaveItem(itemId) {
+                let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                savedItems = savedItems.filter(id => id !== itemId);
+                localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                localStorage.removeItem(`savedItem-${itemId}`);
+            }
+        });
+  </script>
+
+
+
+
+
+  
+  
+  </div>
+  
+
+
+
+
+
+
+    
+  
+</body>
+
+
+
+
+
